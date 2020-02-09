@@ -1,0 +1,92 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    justify-content: center;
+
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 451px;
+    border-radius: 5px;
+    background: #2f3242;
+    height: 442px;
+    padding: 15px 0px;
+}
+
+.modal-input {
+    border: none;
+    padding: 10px 10px;
+    width: 237px;
+    border-radius: 30px;
+    background-color: #4e5569;
+    margin: 15px 0px;
+    color: white;
+}
+input[type="text"]::placeholder {
+    color: white;
+    font-weight: bold;
+}
+.add-button {
+    width: 133px;
+    height: 48px;
+    border-radius: 24px;
+    border: 2px solid #2196f3;
+    background-color: #2f3242;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.24px;
+}
+
+.plus {
+    font-size: 18px;
+    padding-left: 15px;
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.button {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.add-button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.modal-button {
+    width: 133px;
+    height: 48px;
+    border-radius: 24px;
+    border: 2px solid #2196f3;
+    background-color: #2f3242;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.24px;
+    margin-bottom: 6px;
+}
+
+.modal-button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.mg-rgt-20 {
+    margin-right: 20px;
+}

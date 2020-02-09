@@ -1,0 +1,45 @@
+.wrapper {
+    max-width: 1700px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.block-project {
+    height: 93px;
+    border-radius: 5px;
+    background-color: #3a3e52;
+    margin: 20px 0px;
+    border-left: 4px solid #2196f3;
+}
+.block-project.full{
+    border-left: 4px solid #27f310;
+}
+.block-project.zero{
+    border-left: 4px solid #B4B4B4;
+}
+
+.box-project {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0px 10px;
+    height: 93px;
+    align-items: center;
+}
+
+.user-profile {
+    display: flex;
+}
+
+.user-ava {
+    padding-right: 15px;
+}
+.title {
+    width: 180px;
+}
+.status {
+    width: 103px;
+}

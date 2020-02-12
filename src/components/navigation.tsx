@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import './HeadNavigation.css'
 
-class HeadNavigation extends Component {
+class Header extends Component {
     render() {
         return (
             <header>
-                <img className="header__logo"
-                     src="./logo.png"
-                     alt="">
+                <img
+                    className="header__logo"
+                    src="./logo.png"
+                    alt="">
                 </img>
                 <div className="header__nav">
 
@@ -24,4 +24,4 @@ class HeadNavigation extends Component {
         );
     }
 }
-export default HeadNavigation;
+export default Header;

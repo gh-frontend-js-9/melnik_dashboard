@@ -1,23 +1,32 @@
 import React from 'react';
 import './App.css';
-import ProjectList from "./components/ProjectList/ProjectList";
-import HeadNavigation from "./components/HeadNavigation/HeadNavigation";
+import Projects from "./components/projects";
+import Header from "./components/navigation";
 
 const App: React.FC = () => {
-
     return (
         <div className="App">
-            <HeadNavigation/>
+            <Header/>
             <section>
                 <div className="section__nav">
-                    <i className="fas fa-home"></i>
-                    <i className="fas fa-bars"></i>
-                    <i className="fas fa-chart-line"></i>
-                    <i className="fas fa-envelope"></i>
-                    <i className="fas fa-user-friends"></i>
+                    <a href="#">
+                        <i className="fas fa-home"></i>
+                    </a>
+                    <a href="#">
+                        <i className="fas fa-bars"></i>
+                    </a>
+                    <a href="#">
+                        <i className="fas fa-chart-line"></i>
+                    </a>
+                    <a href="#">
+                        <i className="fas fa-envelope"></i>
+                    </a>
+                    <a href="#">
+                        <i className="fas fa-user-friends"></i>
+                    </a>
                 </div>
                 <div className="section__content">
-                    <ProjectList/>
+                    <Projects/>
                 </div>
             </section>
         </div>

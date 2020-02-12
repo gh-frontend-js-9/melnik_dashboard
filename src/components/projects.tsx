@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
-import Project from "../../models/Project";
-import API from "../../service/apiService";
-import ProjectLine from "../ProjectLine/ProjectLine";
-import ProjectButton from "../ProjectButton/ProjectButton";
-
-interface Props {
-
-}
+import React, {Component} from "react";
+import API from "../service/apiService";
+import RenderProject from "./renderProject/renderProject";
+import Project from "../models/Project";
+import Test from "./Modals/addProjectModal";
 
 interface State {
     projects: Project[]
 }
 
-class ProjectList extends Component<Props,State> {
+class Projects extends Component<{}, State> {
 
     constructor(props) {
         super(props);
@@ -28,7 +24,7 @@ class ProjectList extends Component<Props,State> {
                     projects: response,
                 })
             })
-    }
+    };
 
     componentDidMount(): void {
         this.updateProjects()
@@ -37,19 +33,17 @@ class ProjectList extends Component<Props,State> {
     render() {
         return (
             <div>
-                <div>
-                <ProjectButton update={this.updateProjects} />
+                {<Test/>}
                 {
                     this.state.projects.map(project => {
-                        return(
-                            <ProjectLine project={project} key={project._id}/>
+                        return (
+                            <RenderProject project={project} key={project._id}/>
                         )
                     })
                 }
-                </div>
             </div>
         );
     }
 }
 
-export default ProjectList;
+export default Projects

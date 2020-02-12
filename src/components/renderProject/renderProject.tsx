@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
-import './ProjectLine.css';
+import './renderProject.css';
 import Project from "../../models/Project";
+import MoreMenuModal from "../Modals/moreMenuModal";
 
-
-interface Props {
-    project: Project
-}
-
-class ProjectLine extends Component<Props> {
+class RenderProject extends Component<{project: Project}> {
 
 
     render() {
         let {project} = this.props;
-
 
         return (
             <div className='wrapper'>
@@ -23,23 +18,23 @@ class ProjectLine extends Component<Props> {
                 >
                     <div className='box-project'>
                         <div>
-                            <div className='title'>
+                            <p className='title'>
                                 {project.title}
-                            </div>
-                            <div>
+                            </p>
+                            <p className='colorG'>
                                 {project.company}
-                            </div>
+                            </p>
                         </div>
                         <div>
                             {project.cost}
                         </div>
                         <div>
-                            <div>
+                            <p>
                                 15 May 2016
-                            </div>
-                            <div>
+                            </p>
+                            <p className='colorG'>
                                 10 days left
-                            </div>
+                            </p>
                         </div>
                         <div>
                             {project.timeSpent + " hours"}
@@ -52,7 +47,7 @@ class ProjectLine extends Component<Props> {
                         </div>
                         <div className='user-profile'>
                             <div className='user-ava'>
-                                Ava
+
                             </div>
                             <div>
                                 <div>
@@ -60,12 +55,15 @@ class ProjectLine extends Component<Props> {
                                         project.assigned ? project.assigned.name : "Melya"
                                     }
                                 </div>
-                                <div>
+                                <p className='colorG'>
                                     {
                                         project.assigned ? project.assigned.description : "Master/Lomaster"
                                     }
-                                </div>
+                                </p>
                             </div>
+                            {
+                                <MoreMenuModal key={project._id}/>
+                            }
                         </div>
                     </div>
                 </div>
@@ -74,4 +72,4 @@ class ProjectLine extends Component<Props> {
     }
 }
 
-export default ProjectLine;
+export default RenderProject;

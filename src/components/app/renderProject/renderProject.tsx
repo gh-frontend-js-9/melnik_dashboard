@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import './renderProject.css';
-import Project from "../../models/Project";
 import MoreMenuModal from "../Modals/moreMenuModal";
+import Project from "../../../models/Project";
 
 class RenderProject extends Component<{project: Project}> {
 
 
     render() {
         let {project} = this.props;
-
         return (
             <div className='wrapper'>
                 <div className=
@@ -62,7 +61,7 @@ class RenderProject extends Component<{project: Project}> {
                                 </p>
                             </div>
                             {
-                                <MoreMenuModal key={project._id}/>
+                                <MoreMenuModal project={project}/>
                             }
                         </div>
                     </div>

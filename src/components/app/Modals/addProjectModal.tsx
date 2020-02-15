@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Modal from '../../models/modal';
-import API from "../../service/apiService";
+import Modal from '../../../models/modal';
+import API from "../../../service/apiService";
 
 interface IMyComponentState {
     isShowing?: boolean,
@@ -36,7 +36,11 @@ class AddProjectModal extends Component<IMyComponentProps, IMyComponentState> {
     handleSubmit = event => {
         event.preventDefault();
         this.closeModalHandler();
-        API.postProject(this.state);
+        API.addProject(this.state)
+            .then(r => {
+                console.log(r)}
+                )
+            .catch(error => console.log(error.message))
     };
 
     openModalHandler = () => {
@@ -59,16 +63,17 @@ class AddProjectModal extends Component<IMyComponentProps, IMyComponentState> {
                 <button className="open-modal-btn" onClick={this.openModalHandler}>Add project</button>
 
                 <Modal
+                    header="Add project"
                     className="modal"
                     show={this.state.isShowing}
                     close={this.closeModalHandler}
                     continueP={this.handleSubmit}>
                     <form onSubmit={this.handleSubmit} className="addProject">
-                        <input required type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
-                        <input required type="text" name="company" placeholder="Company" onChange={this.handleChange}/>
-                        <input required type="text" name="cost" placeholder="Cost" onChange={this.handleChange}/>
-                        <input required type="date" name="deadline" placeholder="Deadline" onChange={this.handleChange}/>
-                        <input required type="text" name="assigned" placeholder="Assigned" onChange={this.handleChange}/>
+                        <label htmlFor="title">Title: <input required type="text" name="title" placeholder="Title" onChange={this.handleChange}/></label>
+                        <label htmlFor="company">Company: <input required type="text" name="company" placeholder="Company" onChange={this.handleChange}/></label>
+                        <label htmlFor="cost">Cost: <input required type="text" name="cost" placeholder="Cost" onChange={this.handleChange}/></label>
+                        <label htmlFor="deadline">Deadline: <input required type="date" name="deadline" placeholder="Deadline" onChange={this.handleChange}/></label>
+                        <label htmlFor="assigned">Assigned: <input required type="text" name="assigned" placeholder="Assigned" onChange={this.handleChange}/></label>
                             <button className="btn-continue" type="submit">Add</button>
                     </form>
                 </Modal>

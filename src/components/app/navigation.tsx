@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 class Header extends Component {
+    singOut = event => {
+        localStorage.clear();
+        document.location.reload(true);
+    };
     render() {
         return (
             <header>
@@ -18,7 +22,7 @@ class Header extends Component {
                         </img>
                         <i className="fas fa-chevron-down"/>
                     </div>
-                    <i className="fas fa-times"/>
+                    <i className="fas fa-sign-out-alt" onClick={this.singOut}></i>
                 </div>
             </header>
         );

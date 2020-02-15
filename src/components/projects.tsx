@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import API from "../service/apiService";
-import RenderProject from "./renderProject/renderProject";
+import RenderProject from "./app/renderProject/renderProject";
 import Project from "../models/Project";
-import Test from "./Modals/addProjectModal";
+import AddProjectModal from "./app/Modals/addProjectModal";
 
 interface State {
     projects: Project[]
@@ -33,7 +33,7 @@ class Projects extends Component<{}, State> {
     render() {
         return (
             <div>
-                {<Test/>}
+                {<AddProjectModal/>}
                 {
                     this.state.projects.map(project => {
                         return (

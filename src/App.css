@@ -327,3 +327,6 @@ p.user-info__name{
 }
 .t_status i.active{color:green}
 .t_status i.disable{color:red}
+input.hidden{
+    visibility: hidden;
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Projects from "./components/projects";
 import Header from "./components/app/navigation";
 import Auth from "./components/auth";
+import Dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
     return (
@@ -29,7 +29,7 @@ const App: React.FC = () => {
                         </a>
                     </div>
                     <div className="section__content">
-                        <Projects/>
+                        <Dashboard/>
                     </div>
                 </section>
             </div> : <Auth/>

@@ -3,7 +3,7 @@
     color: red;
 }
 .form-auth{
-    margin: 15% auto 0;
+    margin: 10% auto 0;
     padding: 20px;
     border-radius: 20px;
     background-color: #fffae7;
@@ -14,6 +14,10 @@
     align-items: center;
     flex-wrap: wrap;
 }
+.form-auth .message-error{
+    color: red;
+    font-weight: bold;
+}
 .form-auth img {
     width: 200px;
     height: 200px;
@@ -23,6 +27,8 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    max-width: 300px;
+
 }
 .form-auth .form__inputs input{
     padding: 12px;

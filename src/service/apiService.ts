@@ -66,6 +66,39 @@ class API {
         const json = await response.json();
         return {'response': response, 'json': json};
     }
+    static async singUp(body) {
+        let info = {
+            'email': body.email,
+            'password': body.pass,
+            'name': body.name
+        };
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/users/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(info)
+        });
+        const json = await response.json();
+        return {'response': response, 'json': json};
+    }
+    static async recoveryPass(body) {
+        let info = {
+            'email': body.email,
+            'password': body.pass,
+            'confirmationPassword': body.pass2
+        };
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/users/reset_password`, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+                'x-access-token' : ''
+            },
+            body: JSON.stringify(info)
+        });
+        const json = await response.json();
+        return {'response': response, 'json': json};
+    }
 }
 
 export default API

@@ -1,24 +1,32 @@
 import React, {Component} from 'react';
 import Login from "./auth/login";
 import "./auth/styles/auth.css";
-import SingIn from "./auth/sing-in";
+import SingUp from "./auth/sing-up";
+import Recovery from "./auth/recovery";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 
-interface Interface {
-    page?: string
-}
 
-class Auth extends Component<{}, Interface> {
-
-    constructor() {
-        super([]);
-        this.state = {
-            page: "login"
-        }
-    }
+class Auth extends Component {
 
     render() {
         return (
-            this.state.page == "login" ? <Login/> : <SingIn/>
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <Login/>
+                    </Route>
+                    <Route path="/sing-up">
+                        <SingUp/>
+                    </Route>
+                    <Route path="/recovery">
+                        <Recovery/>
+                    </Route>
+                </Switch>
+            </Router>
         )
     }
 }

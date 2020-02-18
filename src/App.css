@@ -26,17 +26,6 @@ header{
     width: 50px;
     border-radius: 50%;
 }
-.header__nav button{
-    padding: 15px 30px;
-    border-radius: 40px;
-    background-color: inherit;
-    border: 2px #2196f3 solid;
-    color: white;
-    font-size: 18px;
-}
-.header__nav button:hover{
-    cursor: pointer;
-}
 .header__nav i{
     color: white;
     font-size: 22px;

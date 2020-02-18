@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import AddProjectModal from "./Modals/addProjectModal";
 
 class Header extends Component {
     singOut = event => {
         localStorage.clear();
-        document.location.reload(true);
+        document.location.pathname = "";
     };
     render() {
         return (
@@ -14,6 +15,7 @@ class Header extends Component {
                     alt="">
                 </img>
                 <div className="header__nav">
+                    {<AddProjectModal/>}
 
                     <i className="fas fa-search"/>
                     <i className="far fa-bell"/>

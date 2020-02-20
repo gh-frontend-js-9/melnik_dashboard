@@ -1,39 +1,42 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/app/navigation";
-import Auth from "./components/auth";
+import "./components/auth/styles/auth.css";
 import Dashboard from "./components/dashboard";
+import Login from "./components/auth/login";
+import SingUp from "./components/auth/sing-up";
+import Recovery from "./components/auth/recovery";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect,
+    Link
+} from "react-router-dom";
+
 
 const App: React.FC = () => {
+
     return (
         <div className="App">
-            {
-                localStorage.token ?  <div>
-                <Header/>
-                <section>
-                    <div className="section__nav">
-                        <a href="#">
-                            <i className="fas fa-home"></i>
-                        </a>
-                        <a href="#">
-                            <i className="fas fa-bars"></i>
-                        </a>
-                        <a href="#">
-                            <i className="fas fa-chart-line"></i>
-                        </a>
-                        <a href="#">
-                            <i className="fas fa-envelope"></i>
-                        </a>
-                        <a href="#">
-                            <i className="fas fa-user-friends"></i>
-                        </a>
-                    </div>
-                    <div className="section__content">
+            <Router>
+                <Switch>
+                    <Route path="/login">
+                        <Login/>
+                    </Route>
+                    <Route path="/sing-up">
+                        <SingUp/>
+                    </Route>
+                    <Route path="/recovery">
+                        <Recovery/>
+                    </Route>
+                    <Route path="/app">
                         <Dashboard/>
-                    </div>
-                </section>
-            </div> : <Auth/>
-            }
+                    </Route>
+                    <Route path="/">
+                        <Redirect to="/login"/>
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     );
 };

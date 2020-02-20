@@ -33,16 +33,16 @@ class MoreMenuModal extends Component<IMyComponentProps, IMyComponentState> {
     handleSubmit = event => {
         event.preventDefault();
         this.closeModal();
-        console.log(this.state)
         API.updateProject(this.state)
-            .then(r => console.log(r))
+            .then(r => {
+                window.location.reload();
+            })
             .catch(error => console.log(error.message))
     };
 
     delProject = event => {
         event.preventDefault();
         this.closeModal();
-        console.log(this.state)
         API.deleteProject(this.state)
             .then(r => console.log(r))
             .catch(error => console.log(error.message))
@@ -74,7 +74,8 @@ class MoreMenuModal extends Component<IMyComponentProps, IMyComponentState> {
                     show={this.state.isShowing}
                     close={this.closeModal}>
                     <form onSubmit={this.handleSubmit}>
-                        <label htmlFor="status">Status: <select required name="status"  onChange={this.handleChange} defaultValue={this.state.status}>
+                        <label htmlFor="status">Status: <select required name="status" onChange={this.handleChange}
+                                                                defaultValue={this.state.status}>
                             <option value="Queued">Queued</option>
                             <option value="Development">Development</option>
                             <option value="Planning">Planning</option>
@@ -82,12 +83,13 @@ class MoreMenuModal extends Component<IMyComponentProps, IMyComponentState> {
                             <option value="Design">Design</option>
                             <option value="Completed">Completed</option>
                         </select> </label>
-                        <label htmlFor="cost">Cost:<input required type="text" name="cost" placeholder="Cost" value={this.state.cost} onChange={this.handleChange}/></label>
+                        <label htmlFor="cost">Cost:<input required type="text" name="cost" placeholder="Cost"
+                                                          value={this.state.cost} onChange={this.handleChange}/></label>
                         <div className="btns">
                             <button className="btn-continue" type="submit">Update</button>
-                            <button style={{left:0 }} className="btn-cancel" onClick={this.delProject}>Delete</button>
+                            <button style={{left: 0}} className="btn-cancel" onClick={this.delProject}>Delete</button>
                         </div>
-                        </form>
+                    </form>
                 </Modal>
             </div>
         );

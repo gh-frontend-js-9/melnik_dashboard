@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import './renderProject.css';
-import MoreMenuModal from "../Modals/moreMenuModal";
-import Project from "../../../models/Project";
+import MoreMenuModal from "../../Modals/moreMenuModal";
+import Project from "../../../../models/Project";
 
 class RenderProject extends Component<{project: Project}> {
-
 
     render() {
         let {project} = this.props;

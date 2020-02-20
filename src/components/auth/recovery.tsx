@@ -27,7 +27,7 @@ class Recovery extends Component<{},State> {
             .then(r => {
                 switch (r.response.status) {
                     case 200:{
-                        document.location.pathname = "/";
+                        document.location.pathname = "/login";
                         break;
                     }
                     case 400:{

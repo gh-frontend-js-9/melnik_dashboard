@@ -30,7 +30,7 @@ class Login extends Component<{},State> {
                     case 200:{
                         window.localStorage.setItem("token", r.response.headers.get('x-auth-token') as string);
                         window.localStorage.setItem("id", r.json._id as string);
-                        document.location.pathname = "/projects";
+                        window.location.pathname = "/app";
 
                         break;
                     }

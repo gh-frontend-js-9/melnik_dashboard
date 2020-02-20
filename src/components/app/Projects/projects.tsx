@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import API from "../../service/apiService";
+import API from "../../../service/apiService";
+import Project from "../../../models/Project";
 import RenderProject from "./renderProject/renderProject";
-import Project from "../../models/Project";
 
 interface State {
     projects: Project[]
@@ -21,8 +21,8 @@ class Projects extends Component<{}, State> {
             .then((response) => {
                 this.setState({
                     projects: response,
-                })
-            })
+                });
+            });
     };
 
     componentDidMount(): void {

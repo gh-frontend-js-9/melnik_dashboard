@@ -23,13 +23,13 @@ class Dashboard extends Component {
                             <a href="#">
                                 <i className="fas fa-home"/>
                             </a>
-                            <Link to="/app/projects">
+                            <Link to="/projects">
                                 <i className="fas fa-bars"/>
                             </Link>
                             <a href="#">
                                 <i className="fas fa-chart-line"/>
                             </a>
-                            <Link to="/app/inbox">
+                            <Link to="/inbox">
                                 <i className="fas fa-envelope"/>
                             </Link>
                             <a href="#">
@@ -38,14 +38,14 @@ class Dashboard extends Component {
                         </div>
                         <div className="section__content">
                             <Switch>
-                                <Route path="/app/projects">
+                                <Route path="/projects">
                                     <Projects/>
                                 </Route>
-                                <Route path="/app/inbox">
+                                <Route path="/inbox">
                                     <Inbox/>
                                 </Route>
-                                <Route path="/app/">
-                                    <Redirect to="/app/projects"/>
+                                <Route path="/">
+                                    <Redirect to="/projects"/>
                                 </Route>
                             </Switch>
                         </div>

@@ -23,25 +23,31 @@ class Recovery extends Component<{},State> {
     handleSubmit = event => {
         this.setState({'message': ""});
         event.preventDefault();
-        API.recoveryPass(this.state)
-            .then(r => {
-                switch (r.response.status) {
-                    case 200:{
-                        document.location.pathname = "/login";
-                        break;
-                    }
-                    case 400:{
-                        let _tmp = '';
-                        if (r.json.errors.email)
-                            _tmp += r.json.errors.email + "\n";
+        if (this.state.pass === this.state.pass2) {
+            API.recoveryPass(this.state)
+                .then(r => {
+                    switch (r.response.status) {
+                        case 200: {
+                            document.location.pathname = "/login";
+                            break;
+                        }
+                        case 400: {
+                            let _tmp = '';
+                            if (r.json.errors.password)
+                                _tmp += r.json.errors.password + "\n";
+                            else if (r.json.errors.confirmationPassword)
+                                _tmp += r.json.errors.confirmationPassword + "\n";
 
-                        this.setState({'message': _tmp});
-                        break;
+                            this.setState({'message': _tmp});
+                            break;
+                        }
                     }
-                }
-                console.log(r.response.status);
-            })
-            .catch(error => console.log(error))
+                    console.log(r.response.status);
+                })
+                .catch(error => console.log(error))
+        }else {
+            this.setState({'message': "Password confirmation does not match password"});
+        }
     };
 
     render() {

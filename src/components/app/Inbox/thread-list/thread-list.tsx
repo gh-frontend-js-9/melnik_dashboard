@@ -1,10 +1,14 @@
 import React, {Component} from "react";
+import API from "../../../../service/apiService";
+import RenderThread from "./renderThread";
+import Thread from "../../../../models/thread";
 
 interface State {
-a?: number
+    threads: Thread[]
 }
+
 interface Props {
-    q?:any
+    upd?: any
 }
 
 class ThreadList extends Component<Props, State> {
@@ -12,26 +16,42 @@ class ThreadList extends Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {
-            a:1
+            threads: []
         }
     }
 
-    edit = event => {
-        this.props.q(this.state.a);
-        // this.setState({a: 2})
+    getThreads = () => {
+        API.getAllThreads()
+            .then((response) => {
+                this.setState({
+                    threads: response,
+                });
+            });
+    };
+
+    componentDidMount(): void {
+        this.getThreads();
+    }
+
+    edit = info => {
+        this.props.upd(info);
     };
 
     render() {
         return (
             <div className="dialogs" id="dialogs">
-
+                {
+                    this.state.threads.map(thread => {
+                        return (
+                            <RenderThread thread={thread} key={thread._id}/>
+                        )
+                    })
+                }
                 <button onClick={this.edit} className="dialogs-add">
                     <i className="fas fa-plus"/>
                     New coversation
                 </button>
             </div>
-
-
         );
     }
 }

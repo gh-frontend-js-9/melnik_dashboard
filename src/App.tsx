@@ -1,17 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import "./components/auth/styles/auth.css";
 import Dashboard from "./components/dashboard";
 import Auth from "./components/auth";
+import {connect} from "react-redux";
 
+interface Interface2 {
+    user: {
+        _id?: string
+    }
+}
 
-const App: React.FC = () => {
+class App extends Component<Interface2> {
 
-    return (
-        <div className="App">
-            {localStorage.token ?  <Dashboard/>: <Auth/>}
-        </div>
-    );
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
+    render() {
+        return (
+            <div className="App">
+                {this.props.user._id ? <Dashboard/> : <Auth/>}
+            </div>
+        )
+    };
+}
+
+const mapStateToProps = function (state) {
+    return {
+        user: state.user,
+    }
 };
 
-export default App;
+export default connect(mapStateToProps)(App);

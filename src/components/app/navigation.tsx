@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import AddProjectModal from "./Modals/addProjectModal";
+import { connect } from "react-redux";
+import {delUser} from "../../store/actions";
 
-class Header extends Component {
-    singOut = event => {
+
+class Header extends Component<{delUser:any},{}> {
+
+    singOut = () => {
         localStorage.clear();
-        document.location.pathname = "/";
+        this.props.delUser();
     };
     render() {
         return (
@@ -29,4 +33,12 @@ class Header extends Component {
         );
     }
 }
-export default Header;
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    };
+};
+const  mapDispatchToProps = {
+    delUser,
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

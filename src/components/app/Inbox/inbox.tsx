@@ -2,28 +2,23 @@ import React, {Component} from "react";
 import ThreadList from "./thread-list/thread-list";
 import Thread from "./thread/thread";
 import AboutUser from "./aboutUser/aboutUser";
+import {connect} from "react-redux";
 
 interface State {
-    test?: string,
-    isPress?: boolean
+    user?: object,
 }
 
-class Inbox extends Component<{}, State> {
+class Inbox extends Component<{openThread:object}, State> {
 
     constructor(props) {
         super(props);
         this.state = {
-            test: 'zalypa',
-            isPress: true
+            user: {},
         }
     }
 
-    update = t => {
-        this.setState({isPress: false});
-        console.log(this.state);
-    };
-
     render() {
+        console.log(this.props);
         return (
             <div>
                 <div className="content__nav">
@@ -49,15 +44,19 @@ class Inbox extends Component<{}, State> {
                     </div>
                 </div>
                 <div className="content_content">
-                    <ThreadList
-                        q={this.update}>
-                    </ThreadList>
-                    {this.state.isPress ? <Thread key={this.state.test}></Thread> : null}
-                    {this.state.isPress ? <AboutUser/> : null}
+                    <ThreadList/>
+                    {this.props.openThread ? <Thread/> : null}
+                    {this.props.openThread ? <AboutUser user={this.state.user}/> : null}
                 </div>
             </div>
         );
     }
 }
+const mapStateToProps = function(state){
+    return {
+        user: state.user,
+        openThread: state.openThread
+    }
+};
 
-export default Inbox
+export default connect(mapStateToProps,{})(Inbox)

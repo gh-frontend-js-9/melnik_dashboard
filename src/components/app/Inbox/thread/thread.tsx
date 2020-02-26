@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import API from "../../../../service/apiService";
 
 interface State {
 
@@ -14,19 +15,22 @@ class Thread extends Component<Props, State> {
         this.state = {}
     }
 
+    sendMessage = () => {
+        let message = document.getElementById("input-message");
+        // API
+        console.log(message)
+    };
 
     componentDidMount(): void {
-        console.log(this.props)
     }
 
     render() {
-        let {key} = this.props;
         return (
             <div className="dialog">
                 <div className="dialog-items" id="dialog-messages"></div>
                 <form id="form">
-                    {key}
-                    <input type="text" placeholder="Write a message..."/>
+                    <input type="text" id="input-message" placeholder="Write a message..."/>
+                    <button onSubmit={this.sendMessage}>Send</button>
                 </form>
             </div>
         );

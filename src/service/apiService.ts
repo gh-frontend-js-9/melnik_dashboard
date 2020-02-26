@@ -82,6 +82,16 @@ class API {
         const json = await response.json();
         return {'response': response, 'json': json};
     }
+    static async getUserById(body) {
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/users/:`+body, {
+            method: 'GET',
+            headers: {
+                'x-access-token' : 'null'
+            },
+        });
+        const json = await response.json();
+        return {'response': response, 'json': json};
+    }
     static async recoveryPass(body) {
         let info = {
             'email': body.email,
@@ -98,6 +108,15 @@ class API {
         });
         const json = await response.json();
         return {'response': response, 'json': json};
+    }
+    static async getAllThreads() {
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/threads?sort=desc`, {
+            method: 'GET',
+            headers: {
+               'x-access-token' : localStorage.token
+            }
+        });
+        return await response.json();
     }
 }
 

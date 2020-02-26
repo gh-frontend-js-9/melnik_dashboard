@@ -26,7 +26,7 @@ class Projects extends Component<{}, State> {
     };
 
     componentDidMount(): void {
-        this.updateProjects()
+        this.updateProjects();
     }
 
     render() {

@@ -97,7 +97,7 @@ section{
 .content_content{
     display: flex;
     flex-direction: row;
-    max-height: 81vh;
+    max-height: 85vh;
 }
 .content_content .dialogs{
     display: flex;

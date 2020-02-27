@@ -1,6 +1,8 @@
 export const ADD_USER = 'ADD_USER';
 export const DEL_USER = 'DEL_USER';
 export const CHANGE_OPEN_THREAD = 'CHANGE_OPEN_THREAD';
+export const GET_MESSAGES = 'GET_MESSAGES';
+
 
 export const setUser = user => ({
     type: ADD_USER,
@@ -14,6 +16,11 @@ export const changeOpenThread = body => ({
     type: CHANGE_OPEN_THREAD,
     payload: {
         thread: body.thread,
-        user: body.user
+        user: body.user,
+        messages: body.messages
     }
+});
+export const getMessages = body => ({
+    type: GET_MESSAGES,
+    payload: body
 });

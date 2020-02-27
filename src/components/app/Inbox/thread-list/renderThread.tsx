@@ -17,10 +17,13 @@ class RenderThread extends Component<Props> {
         else
             userId = this.props.thread.users[1]._id;
         API.getUserById(userId).then(r => {
-            this.props.changeOpenThread({
-                'thread': this.props.thread,
-                'user': r.json
-            });
+            API.getMessagesFromThread(this.props.thread._id).then(messages => {
+                this.props.changeOpenThread({
+                    'thread': this.props.thread,
+                    'user': r.json,
+                    'messages': messages
+                });
+            })
         });
     };
 

@@ -113,7 +113,16 @@ class API {
         let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/threads?sort=desc`, {
             method: 'GET',
             headers: {
-               'x-access-token' : localStorage.token
+                'x-access-token' : localStorage.token
+            }
+        });
+        return await response.json();
+    }
+    static async getMessagesFromThread(body) {
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${body}?sort=desc`, {
+            method: 'GET',
+            headers: {
+                'x-access-token' : localStorage.token
             }
         });
         return await response.json();

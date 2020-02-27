@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { connect } from "react-redux";
 
 interface State {
 
@@ -26,7 +27,7 @@ class AboutUser extends Component<Props, State> {
                 <img className="user-info__avatar" src="./../user1.jpg" alt=""/>
                 <p className="user-info__name">{this.props.user.name}</p>
                 <p className="work">Frontend Developer</p>
-                <p className="desc">{this.props.user.name}</p>
+                <p className="desc">{this.props.user.description}</p>
                 <p className="title">Email</p>
                 <p className="text">{this.props.user.email}</p>
                 <p className="title">Phone</p>
@@ -40,4 +41,10 @@ class AboutUser extends Component<Props, State> {
     }
 }
 
-export default AboutUser;
+const mapStateToProps = state => {
+    return {
+        user: state.openThread.user
+    };
+};
+
+export default connect(mapStateToProps)(AboutUser);

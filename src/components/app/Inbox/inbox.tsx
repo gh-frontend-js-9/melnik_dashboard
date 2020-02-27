@@ -18,7 +18,6 @@ class Inbox extends Component<{openThread:object}, State> {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <div className="content__nav">

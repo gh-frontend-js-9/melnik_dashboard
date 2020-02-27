@@ -83,10 +83,10 @@ class API {
         return {'response': response, 'json': json};
     }
     static async getUserById(body) {
-        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/users/:`+body, {
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/users/`+body, {
             method: 'GET',
             headers: {
-                'x-access-token' : 'null'
+                'x-access-token' : localStorage.token
             },
         });
         const json = await response.json();

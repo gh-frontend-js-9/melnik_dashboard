@@ -1,16 +1,27 @@
 import React, {Component} from 'react';
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import {changeOpenThread} from "../../../../store/actions";
+import API from "../../../../service/apiService";
 
 interface Props {
     thread: any,
-    changeOpenThread:any
+    changeOpenThread: any
 }
 
 class RenderThread extends Component<Props> {
 
     updOpenThread = () => {
-        this.props.changeOpenThread(this.props.thread)
+        let userId = '';
+        if (this.props.thread.users[0]._id !== localStorage.id)
+            userId = this.props.thread.users[0]._id;
+        else
+            userId = this.props.thread.users[1]._id;
+        API.getUserById(userId).then(r => {
+            this.props.changeOpenThread({
+                'thread': this.props.thread,
+                'user': r.json
+            });
+        });
     };
 
     render() {
@@ -31,19 +42,19 @@ class RenderThread extends Component<Props> {
                     <p>{thread.message ? thread.message.body : ""}</p>
                 </div>
             );
-        }
-        else
+        } else
             return null
     }
 }
 
 const mapStateToProps = state => {
     return {
+        me: state.user,
         openThread: state.openThread
     };
 };
-const  mapDispatchToProps = {
+const mapDispatchToProps = {
     changeOpenThread,
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(RenderThread);
+export default connect(mapStateToProps, mapDispatchToProps)(RenderThread);

@@ -10,7 +10,10 @@ export const delUser = () => ({
     type: DEL_USER,
     payload: {}
 });
-export const changeOpenThread = thread => ({
+export const changeOpenThread = body => ({
     type: CHANGE_OPEN_THREAD,
-    payload: thread
+    payload: {
+        thread: body.thread,
+        user: body.user
+    }
 });

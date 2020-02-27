@@ -21,9 +21,6 @@ class Thread extends Component<Props, State> {
         console.log(message)
     };
 
-    componentDidMount(): void {
-    }
-
     render() {
         return (
             <div className="dialog">

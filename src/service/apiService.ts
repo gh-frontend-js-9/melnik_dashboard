@@ -146,6 +146,15 @@ class API {
         });
         return await response.json();
     }
+    static async getAllUsers() {
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/users/all`, {
+            method: 'GET',
+            headers: {
+                'x-access-token' : localStorage.token
+            }
+        });
+        return await response.json();
+    }
 }
 
 export default API

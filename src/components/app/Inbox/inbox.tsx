@@ -6,26 +6,26 @@ import {connect} from "react-redux";
 
 interface State {
     user?: object,
+    isOpenThread?: any
 }
 
-class Inbox extends Component<{openThread:object}, State> {
+class Inbox extends Component<{ openThread: object }, State> {
 
     constructor(props) {
         super(props);
         this.state = {
             user: {},
+            isOpenThread:false
         }
     }
 
     render() {
         return (
             <div>
+                        {
+                            document.documentElement.clientWidth > 700 ?
                 <div className="content__nav">
                     <div className="content__nav__types">
-                <span>
-                    <i className="fas fa-inbox"/>
-                    Inbox (2)
-                </span>
                         <span>
                     <i className="fab fa-telegram-plane"/>
                     Sent
@@ -42,6 +42,9 @@ class Inbox extends Component<{openThread:object}, State> {
                         </select>
                     </div>
                 </div>
+                                :
+                                null
+                        }
                 <div className="content_content">
                     <ThreadList/>
                     {this.props.openThread ? <Thread/> : null}
@@ -51,11 +54,13 @@ class Inbox extends Component<{openThread:object}, State> {
         );
     }
 }
-const mapStateToProps = function(state){
+
+const mapStateToProps = function (state) {
     return {
         user: state.user,
         openThread: state.openThread
     }
 };
 
-export default connect(mapStateToProps,{})(Inbox)
+
+export default connect(mapStateToProps, {})(Inbox)

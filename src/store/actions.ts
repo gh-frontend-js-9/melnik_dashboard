@@ -1,7 +1,8 @@
 export const ADD_USER = 'ADD_USER';
 export const DEL_USER = 'DEL_USER';
 export const CHANGE_OPEN_THREAD = 'CHANGE_OPEN_THREAD';
-export const GET_MESSAGES = 'GET_MESSAGES';
+export const IS_RELOAD = 'IS_RELOAD';
+export const IS_OPEN_THREAD = 'IS_OPEN_THREAD';
 
 
 export const setUser = user => ({
@@ -20,7 +21,11 @@ export const changeOpenThread = body => ({
         messages: body.messages
     }
 });
-export const getMessages = body => ({
-    type: GET_MESSAGES,
+export const isReload = body => ({
+    type: IS_RELOAD,
+    payload: body
+});
+export const isOpenThread = body => ({
+    type: IS_OPEN_THREAD,
     payload: body
 });

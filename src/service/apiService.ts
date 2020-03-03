@@ -118,8 +118,27 @@ class API {
         });
         return await response.json();
     }
+    static async sendMessage(body) {
+        let info = {
+            "thread": {
+                "_id": body.idThread
+            },
+            "message": {
+                "body": body.message
+            }
+        };
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages`, {
+            method: 'POST',
+            headers: {
+                'x-access-token' : localStorage.token,
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(info)
+        });
+        return await response.json();
+    }
     static async getMessagesFromThread(body) {
-        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${body}?sort=desc`, {
+        let response = await fetch(`https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${body}?sort=asc`, {
             method: 'GET',
             headers: {
                 'x-access-token' : localStorage.token

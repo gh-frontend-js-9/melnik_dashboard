@@ -1,7 +1,8 @@
-import {ADD_USER, CHANGE_OPEN_THREAD, DEL_USER, GET_MESSAGES} from "./actions";
+import {ADD_USER, CHANGE_OPEN_THREAD, DEL_USER, IS_OPEN_THREAD, IS_RELOAD} from "./actions";
 
 const defaultState = {
     user: {},
+    isOpenThread:false,
     openThread: null
 };
 
@@ -22,10 +23,15 @@ export const rootReducer = (state = defaultState, action) => {
                 ...state,
                 openThread: action.payload
             };
-        case GET_MESSAGES:
+        case IS_RELOAD:
             return {
                 ...state,
-                messages: action.payload
+                isReload: action.payload
+            };
+        case IS_OPEN_THREAD:
+            return {
+                ...state,
+                isOpenThread: action.payload
             }
         // case
     }

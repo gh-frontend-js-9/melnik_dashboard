@@ -2,13 +2,18 @@ import React, {Component} from "react";
 import API from "../../../../service/apiService";
 import RenderThread from "./renderThread";
 import Thread from "../../../../models/thread";
+import {connect} from 'react-redux';
+import {isReload} from "../../../../store/actions";
 
 interface State {
     threads: Thread[]
 }
 
 interface Props {
-    upd?: any
+    upd?: any,
+    isReloadF:boolean,
+    isReload:any,
+    isOpenThread: boolean
 }
 
 class ThreadList extends Component<Props, State> {
@@ -33,13 +38,28 @@ class ThreadList extends Component<Props, State> {
         this.getThreads();
     }
 
+    componentDidUpdate(){
+        if(this.props.isReload) {
+            this.props.isReload(false);
+            this.getThreads();
+        }
+    }
+
     edit = info => {
         this.props.upd(info);
     };
 
     render() {
         return (
-            <div className="dialogs" id="dialogs">
+            <div className="dialogs" id="dialogs" style={
+                document.documentElement.clientWidth < 700 && !this.props.isOpenThread ?
+                    {
+                            display:"flex"
+                    } :
+                    {
+                            display:"none"
+                    }
+            }>
                 {
                     this.state.threads.map(thread => {
                         return (
@@ -56,4 +76,15 @@ class ThreadList extends Component<Props, State> {
     }
 }
 
-export default ThreadList
+const mapStateToProps = function(state){
+    return {
+        isReloadF: state.isReload,
+        isOpenThread: state.isOpenThread
+    }
+};
+
+const  mapDispatchToProps = {
+    isReload,
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(ThreadList)

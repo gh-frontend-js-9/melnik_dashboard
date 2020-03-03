@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux"
-import {changeOpenThread} from "../../../../store/actions";
+import {changeOpenThread, isOpenThread} from "../../../../store/actions";
 import API from "../../../../service/apiService";
 
 interface Props {
     thread: any,
-    changeOpenThread: any
+    changeOpenThread: any,
 }
 
 class RenderThread extends Component<Props> {
@@ -53,11 +53,12 @@ class RenderThread extends Component<Props> {
 const mapStateToProps = state => {
     return {
         me: state.user,
-        openThread: state.openThread
+        openThread: state.openThread,
     };
 };
 const mapDispatchToProps = {
     changeOpenThread,
+    isOpenThread
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RenderThread);

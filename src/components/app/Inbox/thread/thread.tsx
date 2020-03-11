@@ -10,8 +10,8 @@ interface Props {
     getMessages?: any,
     messages: any,
     isReload: any,
-    user?:any,
-    changeOpenThread?:any
+    user?: any,
+    changeOpenThread?: any
 }
 
 interface State {
@@ -42,6 +42,16 @@ class Thread extends Component<Props, State> {
                 value: ''
             })
         }
+    }
+
+    componentDidMount(): void {
+        setInterval(() => {
+            API.getMessagesFromThread(this.props.thread._id).then(messages => {
+                if (this.props.messages.length !== messages.length) {
+                    this.updateOpenThread()
+                }
+            })
+        }, 3000)
     }
 
     handleChange(event) {

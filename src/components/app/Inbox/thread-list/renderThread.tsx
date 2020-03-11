@@ -31,7 +31,7 @@ class RenderThread extends Component<Props> {
         let thread = this.props.thread;
         if (thread.users.length === 2) {
             let user;
-            if (thread.users[0] !== localStorage.id)
+            if (thread.users[0]._id === localStorage.id)
                 user = thread.users[1];
             else
                 user = thread.users[0];
